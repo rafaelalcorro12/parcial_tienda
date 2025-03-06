@@ -1,0 +1,19 @@
+<ion-card>
+  <ion-card-header>
+    <ion-card-title>{{ items.title }}</ion-card-title>
+  </ion-card-header>
+  
+  <ion-card-content>
+    <ion-thumbnail slot="start">
+      <img [src]="items.image" alt="{{ items.title }}">
+    </ion-thumbnail>
+    <p>Precio: {{ items.price | currency:'USD' }}</p>
+    <p>Cantidad: 
+      {{ items.quantity || 1 }}</p>
+      <br>
+      <ion-button  size="small" color="light" (click)="desIncre()">-</ion-button>
+      <ion-button size="small" color="light" (click)="increment()">+</ion-button>
+  </ion-card-content>
+
+  <ion-button  color="danger" expand="full" (click)="quitarItem()">Eliminar</ion-button>
+</ion-card>

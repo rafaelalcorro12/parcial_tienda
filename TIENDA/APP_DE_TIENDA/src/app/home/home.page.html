@@ -1,0 +1,25 @@
+<ion-header *ngIf="!logo" [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Mi tienda Virtual
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button [routerLink]="['/carro']">
+        <ion-icon slot="icon-only" name="cart"></ion-icon>
+        <ion-badge *ngIf="cartItemCount > 0" color="danger"> {{ cartItemCount }}</ion-badge>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div *ngIf="logo" class="logo">
+    <img src="/assets/icon/shop.gif">
+  </div>
+
+  <div *ngIf="!logo">
+    <app-select (categorySelected)="categorieSelect = $event"></app-select>
+    <app-ascdes (sortSelected)="sortOrdenar = $event"></app-ascdes>
+    <app-producto [categories]="categorieSelect" [sortOrdenar]="sortOrdenar"></app-producto>
+  </div>
+</ion-content>
